@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
+{/* https://daveceddia.com/ajax-requests-in-react/ */}
+
 class FetchDemo extends Component {
   state = {
     posts: []
