@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import DateBeautified from '../DateBeautified/DateBeautified'
 
 {/* https://daveceddia.com/ajax-requests-in-react/ */}
 
@@ -28,20 +29,18 @@ class FetchDemo extends Component {
     const { categories } = this.state;
     return (
       <div>
-        <h1>{`${this.props.url}${this.props.path}`}</h1>
-        <ul>
+        <h1>{`${this.props.description}`}</h1>        
           {categories.length ? 
             categories.map(cat => (
-              <li key={cat.id}>
-                <div>{cat.url}</div>
-                <div>{cat.title}</div>
-                <div>{cat.description}</div>
-                <div>{cat.text}</div>
-              </li>
-            ))
-            : 
-            (<li>Loading....</li>)}
-        </ul>
+              <div className="post">
+                <h1><a href={cat.url}>{cat.title}</a></h1>
+                <div className="date">
+					          <p><DateBeautified dateToFormat={cat.published_date}/></p>
+				        </div>
+                <p dangerouslySetInnerHTML = {{__html: cat.description }} />
+                <div dangerouslySetInnerHTML = {{__html: cat.text }} />
+              </div>
+            )) : (<li>Loading....</li>)}
       </div>
     );
   }
