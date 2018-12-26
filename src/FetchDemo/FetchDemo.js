@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import DateBeautified from '../DateBeautified/DateBeautified'
+import MyLoader from '../MyLoader/MyLoader'
 
 {/* https://daveceddia.com/ajax-requests-in-react/ */}
 
@@ -40,7 +41,7 @@ class FetchDemo extends Component {
                 <p dangerouslySetInnerHTML = {{__html: cat.description }} />
                 <div dangerouslySetInnerHTML = {{__html: cat.text }} />
               </div>
-            )) : (<li>Loading....</li>)}
+            )) : (<MyLoader/>)}
       </div>
     );
   }

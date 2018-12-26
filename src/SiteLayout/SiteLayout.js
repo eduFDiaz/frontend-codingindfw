@@ -7,6 +7,7 @@ import cpp from 'highlight.js/lib/languages/cpp';
 import 'highlight.js/styles/github.css';
 
 hljs.registerLanguage('cpp', cpp);
+
 const { Header, Sider, Content } = Layout;
 
 class SiteLayout extends Component{

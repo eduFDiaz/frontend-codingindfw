@@ -10,6 +10,7 @@
     "moment-timezone": "^0.5.23",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
+    "react-loader-spinner": "^2.3.0",
     "react-moment": "^0.8.4",
     "react-scripts": "2.1.1"
   },
