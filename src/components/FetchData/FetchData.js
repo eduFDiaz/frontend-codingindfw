@@ -5,9 +5,10 @@ import MyLoader from '../MyLoader/MyLoader'
 
 {/* https://daveceddia.com/ajax-requests-in-react/ */}
 
-class FetchDemo extends Component {
+export default class FetchData extends Component {
   state = {
-    categories: []
+    categories: [],
+    posts: [],
   }
   
   componentDidMount() {
@@ -22,17 +23,24 @@ class FetchDemo extends Component {
       this.setState({
         categories: res.data.results
       });
-      console.log('state cetegories: ',this.state.categories);
+      console.log('state categories: ',this.state.categories);
+    });
+    axios.get(`${this.props.url}${this.props.path}`).then(res => {
+      console.log(res.data);
+      this.setState({
+        categories: res.data.results
+      });
+      console.log('state posts: ',this.state.posts);
     });
   }
   
   render() {
-    const { categories } = this.state;
+    const { content } = this.state;
     return (
       <div>
         <h1>{`${this.props.description}`}</h1>        
-          {categories.length ? 
-            categories.map(cat => (
+          {content.length ? 
+            content.map(cat => (
               <div className="post">
                 <h1><a href={cat.url}>{cat.title}</a></h1>
                 <div className="date">
@@ -46,5 +54,3 @@ class FetchDemo extends Component {
     );
   }
 }
-
-export default FetchDemo;
