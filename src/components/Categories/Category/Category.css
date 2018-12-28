@@ -1,8 +1,21 @@
 .Category{
     display: inline-block;
     margin: 10px;
-    border: 2px solid #eeeeee;
-    box-shadow: 0 2px 2px #ccc;
+    border: 0px solid #eeeeee;
+    box-shadow: 0 0px 1px #ccc;
     width: 200px;
-    padding: 20px; 
+    padding: 0px; 
+}
+.Category img{
+    width: 200px;
+    height: 100px;
+    margin: 0px;
+    padding-top: 5px;
+}
+.Category h1,p{
+    padding: 10px;
+}
+
+.Category h1{
+    font-size: 20px;
 }

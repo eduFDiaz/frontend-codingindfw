@@ -12,6 +12,7 @@ export default class Posts extends Component {
             date={post.date}
             description={post.description}
             text={post.text}
+            key={index}
             />
         });
     }

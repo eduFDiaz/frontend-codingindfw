@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import hljs from 'highlight.js';
-import 'highlight.js/styles/vs2015.css';
+import classes from 'highlight.js/styles/vs2015.css';
 
 hljs.configure({useBR: false});
 
@@ -10,9 +10,9 @@ export default class Post extends Component{
     }
     render(){
         return(
-            <div>
+            <div key={this.props.index}>
                 <a href={this.props.url}>{this.props.title}</a>
-                <p dangerouslySetInnerHTML={{ __html: this.props.description }}></p>
+                <p className={classes.hljs} dangerouslySetInnerHTML={{ __html: this.props.description }}></p>
                 <div dangerouslySetInnerHTML={{ __html: this.props.text }}></div>
             </div>
         );

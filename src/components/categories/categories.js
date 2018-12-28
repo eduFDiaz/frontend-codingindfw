@@ -11,7 +11,8 @@ export default class Categories extends Component {
             url={category.url}
             slug={category.slug}
             description={category.description}
-            imageSrc={category.image}/>
+            imageSrc={category.image}
+            key={index}/>
         });
     }
 }
