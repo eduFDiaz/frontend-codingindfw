@@ -5,15 +5,20 @@
     box-shadow: 0 0px 1px #ccc;
     width: 200px;
     padding: 0px; 
+    /* border: 2px solid black; */
 }
 .Category img{
     width: 200px;
     height: 100px;
     margin: 0px;
     padding-top: 5px;
+    /* border: 2px solid black; */
 }
 .Category h1,p{
-    padding: 10px;
+    padding-left: 5px;
+}
+.Category p{
+    margin-top: 10px;
 }
 
 .Category h1{
