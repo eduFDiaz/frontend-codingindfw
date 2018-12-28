@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import DateBeautified from '../DateBeautified/DateBeautified'
-import MyLoader from '../MyLoader/MyLoader'
+import Categories from '../categories'
 
 {/* https://daveceddia.com/ajax-requests-in-react/ */}
 
@@ -9,47 +8,43 @@ export default class FetchData extends Component {
   state = {
     categories: [],
     posts: [],
+    categoriesLoaded: false,
+    postsLoaded: false
+  }
+
+  isDataDownloaded(){
+      return (this.state.categoriesLoaded === true && this.state.postsLoaded === true);
   }
   
   componentDidMount() {
-    /* This component is invoked immediately after a component is mounted
-     (inserted into the tree). Initialization that requires DOM nodes 
-     should go here. If you need to load data from a remote endpoint, 
-     this is a good place to instantiate the network request.
-    */
+    //Fetching Categories
     console.log(`${this.props.url}${this.props.path}`);
-    axios.get(`${this.props.url}${this.props.path}`).then(res => {
+    axios.get(`${this.props.categoriesUrl}`).then(res => {
       console.log(res.data);
       this.setState({
-        categories: res.data.results
+        categories: res.data.results,
+        categoriesLoaded: true
       });
       console.log('state categories: ',this.state.categories);
     });
-    axios.get(`${this.props.url}${this.props.path}`).then(res => {
+    //Fetching Posts
+    axios.get(`${this.props.postsUrl}`).then(res => {
       console.log(res.data);
       this.setState({
-        categories: res.data.results
+        posts: res.data.results,
+        postsLoaded: true
       });
       console.log('state posts: ',this.state.posts);
     });
   }
   
   render() {
-    const { content } = this.state;
+    const categories = [...this.state.categories];
+    const posts = [...this.state.posts];
     return (
       <div>
-        <h1>{`${this.props.description}`}</h1>        
-          {content.length ? 
-            content.map(cat => (
-              <div className="post">
-                <h1><a href={cat.url}>{cat.title}</a></h1>
-                <div className="date">
-					          <p><DateBeautified dateToFormat={cat.published_date}/></p>
-				        </div>
-                <p dangerouslySetInnerHTML = {{__html: cat.description }} />
-                <div dangerouslySetInnerHTML = {{__html: cat.text }} />
-              </div>
-            )) : (<MyLoader/>)}
+        <h1>{this.props.description}</h1>        
+          {this.isDataDownloaded() ? <Categories /> : null}
       </div>
     );
   }

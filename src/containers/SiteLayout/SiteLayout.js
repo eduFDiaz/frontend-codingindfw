@@ -16,7 +16,10 @@ class SiteLayout extends Component{
         return (              
           <div>
                 {/* Dont include a slash to close thr domain ex: url=http://localhost:8000/ */}
-                <FetchData description="List of posts" url="http://localhost:8000" path="/blog/api/categories/"/>
+                <FetchData 
+                description="Data" 
+                categoriesUrl="http://localhost:8000/blog/api/categories/" 
+                postsUrl="http://localhost:8000/blog/api/categories/"/>
           </div>
         );
       }
