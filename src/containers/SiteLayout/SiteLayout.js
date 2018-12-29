@@ -1,23 +1,19 @@
-import React, {Component} from 'react';
-import { Layout, Menu, Icon } from 'antd';
-import 'antd/dist/antd.css';  // or 'antd/dist/antd.less'
-import classes from './SiteLayout.css';
-import FetchData from '../../components/FetchData/FetchData';
+import React from "react";
+import Wrapper from "../../components/hoc/Wrapper/Wrapper";
+import CategoryBuilder from "../../components/Categories/CategoryBuilder/CategoryBuilder";
+import PostsBuilder from "../../components/Posts/PostsBuilder/PostsBuilder";
+import classes from "./SiteLayout.css";
+import Toolbar from "../../containers/Toolbar/Toolbar";
+import Footer from "../../containers/Footer/Footer";
 
-const { Header, Sider, Content } = Layout;
-
-class SiteLayout extends Component{
-      render() {
-        return (              
-          <div>
-                {/* Dont include a slash to close thr domain ex: url=http://localhost:8000/ */}
-                <FetchData 
-                description="Categories" 
-                categoriesUrl="http://localhost:8000/blog/api/categories/" 
-                postsUrl="http://localhost:8000/blog/api/posts/"/>
-          </div>
-        );
-      }
-};
-
+const SiteLayout = props => (
+  <Wrapper>
+    <Toolbar />
+    <CategoryBuilder Url="http://localhost:8000/blog/api/categories/" />
+    <main className={classes.Content}>
+      <PostsBuilder Url="http://localhost:8000/blog/api/posts/" />
+    </main>
+    <Footer />
+  </Wrapper>
+);
 export default SiteLayout;

@@ -1,0 +1,9 @@
+.Content{
+    width: 100%;
+    margin-bottom: 30px;
+    padding-left: 150px;
+    padding-right: 150px;
+}
+pre code{
+    box-shadow: 2 2px 2px #aaaaaa;
+}

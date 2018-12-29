@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import DateBeautified from '../../components/DateBeautified/DateBeautified'
-import MyLoader from '../../components/MyLoader/MyLoader'
 import Post from './Post/Post'
 
 export default class Posts extends Component {
     render() {
-        return this.props.posts.map((post, index) => {
+        return this.props.Posts.map((post, index) => {
             return <Post 
             title={post.title}
             url={post.url}
@@ -17,4 +15,3 @@ export default class Posts extends Component {
         });
     }
 }
-//{this.props.categories.map((category, index) => {}};

@@ -12,12 +12,13 @@
     height: 100px;
     margin: 0px;
     padding-top: 5px;
-    /* border: 2px solid black; */
+    border: 1px black;
+    box-shadow: 0 0px 1px #ccc;
 }
 .Category h1,p{
     padding-left: 5px;
 }
-.Category p{
+.Category .title{
     margin-top: 10px;
 }
 
