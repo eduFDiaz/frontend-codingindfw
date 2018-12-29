@@ -1,20 +1,17 @@
-import React, {Component} from "react";
+import React from "react";
 import Wrapper from "../../components/hoc/Wrapper/Wrapper";
 import CategoryBuilder from "../../components/Categories/CategoryBuilder/CategoryBuilder";
 import PostsBuilder from "../../components/Posts/PostsBuilder/PostsBuilder";
 
 import 'antd/dist/antd.css';
 
-import {
-  Layout, Menu, Breadcrumb, Icon,
-} from 'antd';
+import { Layout, Menu, Breadcrumb, Icon} from 'antd';
 
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
-class SiteLayout extends Component {
-  render(){
-    return <Wrapper>
+const SiteLayout = (props) => {
+      return <Wrapper>
       <Layout>
         <Header className="header">
           <div className="logo" />
@@ -69,13 +66,12 @@ class SiteLayout extends Component {
             <Content style={{
               background: '#fff', padding: 24, margin: 0, minHeight: 280,
             }}>
-            <CategoryBuilder Url="http://localhost:8000/blog/api/categories/" />
-            <PostsBuilder Url="http://localhost:8000/blog/api/posts/" />
+            <CategoryBuilder Url="http://localhost:8000/api/categories/" />
+            <PostsBuilder Url="http://localhost:8000/api/posts/" />
         </Content>
           </Layout>
         </Layout>
       </Layout>
     </Wrapper>
-  };
 };
 export default SiteLayout;

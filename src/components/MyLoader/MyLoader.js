@@ -1,15 +1,13 @@
-import React, { Component } from "react";
-import Loader from "react-loader-spinner";
- export default class MyLoader extends Component {
-  //other logic
-    render() {
-     return(
-      <Loader 
-         type="Oval"
-         color="#00BFFF"
-         height="100"	
-         width="100"
-      />   
-     );
-    }
- }
+import React from "react";
+import { Spin, Alert } from 'antd';
+import classes from './MyLoader.css';
+
+const Loader = (props) =>  {
+      return (
+         <div className={classes.example}>
+            <Spin tip={props.tip} size="large" />
+         </div>
+      );
+}
+
+export default Loader;

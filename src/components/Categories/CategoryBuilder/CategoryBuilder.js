@@ -1,31 +1,37 @@
 import React, {Component} from 'react';
 import Categories from '../Categories';
 import axios from 'axios';
-import Wrapper from '../../hoc/Wrapper/Wrapper';
+import MyLoader from '../../MyLoader/MyLoader';
 
 export default class CategoryBuilder extends Component{
     state = {
-        categories: [],
-        categoriesLoaded: false,
-      }
-    
-      isDataDownloaded(){
-          return (this.state.categoriesLoaded === true);
+        content: [],
+        loading: true,
       }
       
       componentDidMount() {
         //Fetching Categories
-        axios.get(`${this.props.Url}`).then(res => {
-          this.setState({
-            categories: res.data.results,
-            categoriesLoaded: true
-          });
-        console.log(this.state.categories);
+        axios.get(`${this.props.Url}`)
+      .then(response => {
+        this.setState({
+          content: response.data.results,
+          loading: false
         });
+      })
+      .catch(error => {
+        console.log(error);
+      });
       }
     render(){
+        let content;
+        if (this.state.loading){
+            content = <MyLoader tip="Loading categories..." />
+        }
+        else{
+            content = <Categories Categories={this.state.content}/>
+        }
         return(
-            <Categories Categories={this.state.categories}/>
+            {...content}
         );
     }
 }
