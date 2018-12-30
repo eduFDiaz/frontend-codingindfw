@@ -3,7 +3,7 @@ import Categories from '../Categories';
 import axios from 'axios';
 import MyLoader from '../../MyLoader/MyLoader';
 
-export default class CategoryBuilder extends Component{
+export default class CategoryList extends Component{
     state = {
         content: [],
         loading: true,
@@ -28,7 +28,7 @@ export default class CategoryBuilder extends Component{
             content = <MyLoader tip="Loading categories..." />
         }
         else{
-            content = <Categories Categories={this.state.content}/>
+            content = <Categories data={this.state.content}/>
         }
         return(
             {...content}

@@ -3,7 +3,7 @@ import Posts from '../Posts';
 import axios from 'axios';
 import MyLoader from '../../MyLoader/MyLoader';
 
-export default class PostsBuilder extends Component{
+export default class PostsList extends Component{
     state = {
         content: [],
         loading: true,
@@ -28,7 +28,7 @@ export default class PostsBuilder extends Component{
             content = <MyLoader tip="Loading posts..." />
         }
         else{
-            content = <Posts Posts={this.state.content}/>
+            content = <Posts data={this.state.content}/>
         }
         return(
             {...content}
