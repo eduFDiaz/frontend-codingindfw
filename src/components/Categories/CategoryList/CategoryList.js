@@ -5,12 +5,14 @@ import MyLoader from '../../MyLoader/MyLoader';
 
 export default class CategoryList extends Component{
     state = {
-        content: [],
+        content: {},
         loading: true,
       }
       
       componentDidMount() {
         //Fetching Categories
+        //const catID = this.props.match.params.catID;
+        //console.log('[Category.js] ID=',catID);
         axios.get(`${this.props.Url}`)
       .then(response => {
         this.setState({

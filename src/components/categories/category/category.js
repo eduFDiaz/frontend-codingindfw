@@ -1,29 +1,66 @@
 import React, {Component} from 'react';
-import classes from './Category.css'
+import axios from 'axios';
+import MyLoader from '../../MyLoader/MyLoader';
 import { Card } from 'antd';
 
-const { Meta } = Card;
-
 export default class Category extends Component{
+    state = {
+        post: {},
+        loading: true,
+      }
+      
+      componentDidMount() {
+        //Fetching Post
+        const catID = this.props.match.params.catID;
+        console.log('[Category.js] catID',`${catID}`);
+        axios.get(`${this.props.Url}${catID}`)
+      .then(response => {
+        this.setState({
+          post: response.data,
+          loading: false
+        });
+        console.log(this.state.post);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+      }
     render(){
+        let content;
+        if (this.state.loading){
+            content = <MyLoader tip="Loading content..." />
+        }
+        else{
+            content = <Card title={this.state.post.title}>
+                <p>{this.state.post.description}</p>
+            </Card>
+            /* content = <List
+            itemLayout="vertical"
+            size="large"
+            pagination={{
+              onChange: (page) => {
+                console.log(page);
+              },
+              pageSize: 3,
+            }}
+            dataSource={content}
+            footer={<div><b>ant design</b> footer part</div>}
+            renderItem={item => (
+              <List.Item
+                key={item.title}
+                actions={[<IconText type="star-o" text="156" />, <IconText type="like-o" text="156" />, <IconText type="message" text="2" />]}
+              >
+                <List.Item.Meta
+                  avatar={<Avatar src={item.avatar} />}
+                  title={<a href={item.href}>{item.title}</a>}
+                  description={<Highlight innerHTML={true}>{item.description}</Highlight>}
+                />
+              </List.Item>
+            )}
+          /> */
+        }
         return(
-            <Card
-    hoverable
-    style={{ width: 240 }}
-    cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
-  >
-    <Meta
-      title="Europe Street beat"
-      description="www.instagram.com"
-    />
-  </Card>
+            {...content}
         );
     }
 }
-
-/* 
-<div className={desclasses} key={this.props.index}>
-<img src={this.props.imageSrc} alt={this.props.title}/>
-<h1 className={classes.title}>{this.props.title}</h1>
-<p>{this.props.description}</p>
-</div> */

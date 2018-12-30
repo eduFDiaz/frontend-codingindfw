@@ -28,7 +28,7 @@ const Posts = (props) => {
               >
                 <List.Item.Meta
                   avatar={<Avatar src={item.avatar} />}
-                  title={<a href={item.href}>{item.title}</a>}
+                  title={<a href={`/posts/${item.id}`}>{item.title}</a>}
                   description={<Highlight innerHTML={true}>{item.description}</Highlight>}
                 />
               </List.Item>

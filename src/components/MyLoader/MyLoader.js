@@ -1,5 +1,5 @@
 import React from "react";
-import { Spin, Alert } from 'antd';
+import { Spin } from 'antd';
 import classes from './MyLoader.css';
 
 const Loader = (props) =>  {
