@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Categories from '../Categories';
 import axios from 'axios';
 import MyLoader from '../../MyLoader/MyLoader';
+import CustomForm from '../../Form/Form';
 
 export default class CategoryList extends Component{
     state = {
@@ -30,7 +31,12 @@ export default class CategoryList extends Component{
             content = <MyLoader tip="Loading categories..." />
         }
         else{
-            content = <Categories data={this.state.content}/>
+            content = <div>
+                        <Categories data={this.state.content}/>
+                        <CustomForm requestType='post'
+                                    id={null} 
+                                    btnText="Create" />
+                      </div>
         }
         return(
             {...content}

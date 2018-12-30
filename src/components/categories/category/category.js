@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import MyLoader from '../../MyLoader/MyLoader';
 import { Card } from 'antd';
+import CustomForm from '../../Form/Form';
+import Wrapper from '../../../components/hoc/Wrapper/Wrapper';
 
 export default class Category extends Component{
     state = {
@@ -12,14 +14,12 @@ export default class Category extends Component{
       componentDidMount() {
         //Fetching Post
         const catID = this.props.match.params.catID;
-        console.log('[Category.js] catID',`${catID}`);
         axios.get(`${this.props.Url}${catID}`)
       .then(response => {
         this.setState({
           post: response.data,
           loading: false
         });
-        console.log(this.state.post);
       })
       .catch(error => {
         console.log(error);
@@ -31,33 +31,15 @@ export default class Category extends Component{
             content = <MyLoader tip="Loading content..." />
         }
         else{
-            content = <Card title={this.state.post.title}>
-                <p>{this.state.post.description}</p>
-            </Card>
-            /* content = <List
-            itemLayout="vertical"
-            size="large"
-            pagination={{
-              onChange: (page) => {
-                console.log(page);
-              },
-              pageSize: 3,
-            }}
-            dataSource={content}
-            footer={<div><b>ant design</b> footer part</div>}
-            renderItem={item => (
-              <List.Item
-                key={item.title}
-                actions={[<IconText type="star-o" text="156" />, <IconText type="like-o" text="156" />, <IconText type="message" text="2" />]}
-              >
-                <List.Item.Meta
-                  avatar={<Avatar src={item.avatar} />}
-                  title={<a href={item.href}>{item.title}</a>}
-                  description={<Highlight innerHTML={true}>{item.description}</Highlight>}
-                />
-              </List.Item>
-            )}
-          /> */
+            content = <div>
+                        <Card title={this.state.post.title}>
+                            <p>{this.state.post.description}</p>
+                        </Card><br></br>
+                        <h2>Create a new Category</h2>
+                        <CustomForm requestType='put'
+                                    id={this.state.post.id}
+                                    btnText="Update"/>
+                      </div>
         }
         return(
             {...content}
