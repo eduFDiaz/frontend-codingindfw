@@ -3,7 +3,6 @@ import axios from 'axios';
 import MyLoader from '../../MyLoader/MyLoader';
 import { Card, Button } from 'antd';
 import CustomForm from '../../Form/Form';
-import Wrapper from '../../../components/hoc/Wrapper/Wrapper';
 
 export default class Category extends Component {
     state = {
