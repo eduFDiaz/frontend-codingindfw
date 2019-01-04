@@ -14,7 +14,7 @@ export default class PostsList extends Component{
         axios.get(`${this.props.Url}`)
       .then(response => {
         this.setState({
-          content: response.data.results,
+          content: response.data,
           loading: false
         });
       })
