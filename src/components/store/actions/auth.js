@@ -49,12 +49,12 @@ export const authLogin = (username, password) => {
         dispatch(authStart());
         // we post username and password the api auth system, a token is returned
         // if the call was successful
-        axios.post('http://127.0.0.1:8000/api-auth/login/', {
+        axios.post('http://127.0.0.1:8000/rest-auth/login/', {
             username: username,
             password: password
         })
         .then(res => {
-            // token is the key (token) returned by the api-auth on a successfull login
+            // token is the key (token) returned by the rest-auth on a successfull login
             const token = res.data.key;
             // expiration date will be the time the user will be logged in before the system kick him(her) out
             const expirationDate = new Date(new Date().getTime() + 3600 + 1000);
@@ -80,14 +80,14 @@ export const authSignup = (username, email, password1, password2) => {
         dispatch(authStart());
         // we post username and password the api auth system, a token is returned
         // if the call was successful
-        axios.post('http://127.0.0.1:8000/api-auth/registration/', {
+        axios.post('http://127.0.0.1:8000/rest-auth/registration/', {
             username: username,
             email: email,
             password1: password1,
             password2: password2
         })
         .then(res => {
-            // token is the key (token) returned by the api-auth on a successfull login
+            // token is the key (token) returned by the rest-auth on a successfull login
             const token = res.data.key;
             // expiration date will be the time the user will be logged in before the system kick him(her) out
             const expirationDate = new Date(new Date().getTime() + 3600 + 1000);
