@@ -28,7 +28,7 @@ class SiteLayout extends Component {
           content: response.data,
           loading: false
         });
-        console.log('[componentDidMount] in Layout:', this.state.content);
+        //console.log('[componentDidMount] in Layout:', this.state.content);
       })
       .catch(error => {
         console.log(error);
@@ -97,4 +97,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default withRouter(connect(mapDispatchToProps)(SiteLayout));
+export default withRouter(connect(null,mapDispatchToProps)(SiteLayout));
