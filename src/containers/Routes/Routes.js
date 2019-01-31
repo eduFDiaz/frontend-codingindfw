@@ -14,6 +14,7 @@ const BaseRouter = (properties) =>{
                 
                 <Route exact path='/categories/' render={(props) => <CategoryList {...props} Url="http://localhost:8000/api/categories/" />}/>
                 <Route exact path='/categories/:catID' render={(props) => <Category  {...props} Url="http://localhost:8000/api/categories/" />} />
+                <Route exact path='/bycategory/:catID' render={(props) => <PostList {...props} Url="http://localhost:8000/api/posts/" filter="true" />} />
                 
                 <Route exact path='/posts/' render={(props) => <PostList {...props} Url="http://localhost:8000/api/posts/" />} />
                 <Route exact path='/posts/:postID' render={(props) => <Post {...props} Url="http://localhost:8000/api/posts/" />} />

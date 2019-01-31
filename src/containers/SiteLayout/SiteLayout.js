@@ -10,10 +10,30 @@ import 'antd/dist/antd.css';
 
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 
+import axios from 'axios';
+
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
 class SiteLayout extends Component {
+  state = {
+    content: [],
+    loading: true,
+  }
+  componentDidMount(){
+  var Url="http://localhost:8000/api/categories/";
+  axios.get(`${Url}`)
+      .then(response => {
+        this.setState({
+          content: response.data,
+          loading: false
+        });
+        console.log('[componentDidMount] in Layout:', this.state.content);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
   render() {
     return <Wrapper>
       <Layout>
@@ -25,8 +45,7 @@ class SiteLayout extends Component {
             defaultSelectedKeys={['1']}
             style={{ lineHeight: '64px' }}
           >
-            <Menu.Item key="1"><Link to='/categories/'>Categories</Link></Menu.Item>
-            <Menu.Item key="2"><Link to='/posts/'>Posts</Link></Menu.Item>
+            <Menu.Item key="1"><Link to='/'>Home</Link></Menu.Item>
             {
               this.props.isAuthenticated ?
                 <Menu.Item key="3" onClick={this.props.logout}><Link to='/logout/'>Logout</Link></Menu.Item> :
@@ -45,23 +64,12 @@ class SiteLayout extends Component {
               defaultOpenKeys={['sub1']}
               style={{ height: '100%', borderRight: 0 }}
             >
-              <SubMenu key="sub1" title={<span><Icon type="user" />subnav 1</span>}>
-                <Menu.Item key="1">option1</Menu.Item>
-                <Menu.Item key="2">option2</Menu.Item>
-                <Menu.Item key="3">option3</Menu.Item>
-                <Menu.Item key="4">option4</Menu.Item>
-              </SubMenu>
-              <SubMenu key="sub2" title={<span><Icon type="laptop" />subnav 2</span>}>
-                <Menu.Item key="5">option5</Menu.Item>
-                <Menu.Item key="6">option6</Menu.Item>
-                <Menu.Item key="7">option7</Menu.Item>
-                <Menu.Item key="8">option8</Menu.Item>
-              </SubMenu>
-              <SubMenu key="sub3" title={<span><Icon type="notification" />subnav 3</span>}>
-                <Menu.Item key="9">option9</Menu.Item>
-                <Menu.Item key="10">option10</Menu.Item>
-                <Menu.Item key="11">option11</Menu.Item>
-                <Menu.Item key="12">option12</Menu.Item>
+              <SubMenu key="sub1" title={<span><Icon type="database" />By Category</span>}>
+              { this.state.loading ? <Menu.Item key="1">Loading...</Menu.Item> : 
+              this.state.content.map((item, index) => {
+                return <Menu.Item key={item.id}><Link to={`/bycategory/${item.id}`} key={item.id}>{item.title}</Link></Menu.Item>
+                ;})
+              }
               </SubMenu>
             </Menu>
           </Sider>
