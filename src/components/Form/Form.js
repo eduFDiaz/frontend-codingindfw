@@ -13,7 +13,7 @@ export default class CustomForm extends React.Component {
         const slug = 'slug-slug';
         switch ( requestType ) {
             case 'post': {
-                return axios.post('https://www.codingindfw.com:8000/api/categories/', {
+                return axios.post('https://www.codingindfw.com/api/categories/', {
                     title: title,
                     description: description,
                     slug: slug
@@ -24,7 +24,7 @@ export default class CustomForm extends React.Component {
                     .catch(error => console.error(error));
             }
             case 'put': {
-                return axios.put(`https://www.codingindfw.com:8000/api/categories/${id}/`, {
+                return axios.put(`https://www.codingindfw.com/api/categories/${id}/`, {
                     title: title,
                     description: description,
                     slug: slug

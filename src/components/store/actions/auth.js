@@ -49,7 +49,7 @@ export const authLogin = (username, password) => {
         dispatch(authStart());
         // we post username and password the api auth system, a token is returned
         // if the call was successful
-        axios.post('http://127.0.0.1:8000/rest-auth/login/', {
+        axios.post('http://127.0.0.1/rest-auth/login/', {
             username: username,
             password: password
         })
@@ -80,7 +80,7 @@ export const authSignup = (username, email, password1, password2) => {
         dispatch(authStart());
         // we post username and password the api auth system, a token is returned
         // if the call was successful
-        axios.post('http://127.0.0.1:8000/rest-auth/registration/', {
+        axios.post('http://127.0.0.1/rest-auth/registration/', {
             username: username,
             email: email,
             password1: password1,
