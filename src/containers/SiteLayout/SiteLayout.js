@@ -21,7 +21,7 @@ class SiteLayout extends Component {
     loading: true,
   }
   componentDidMount(){
-  var Url="http://localhost:8000/api/categories/";
+  var Url="http://www.codingindfw.com:8000/api/categories/";
   axios.get(`${Url}`)
       .then(response => {
         this.setState({

@@ -10,14 +10,14 @@ import Signup from '../../components/Signup/Signup';
 
 const BaseRouter = (properties) =>{
     return  <div>
-                <Route exact path='/' render={(props) => <PostList {...props} Url="http://localhost:8000/api/posts/" />} />
+                <Route exact path='/' render={(props) => <PostList {...props} Url="http://www.codingindfw.com:8000/api/posts/" />} />
                 
-                <Route exact path='/categories/' render={(props) => <CategoryList {...props} Url="http://localhost:8000/api/categories/" />}/>
-                <Route exact path='/categories/:catID' render={(props) => <Category  {...props} Url="http://localhost:8000/api/categories/" />} />
-                <Route exact path='/bycategory/:catID' render={(props) => <PostList {...props} Url="http://localhost:8000/api/posts/" filter="true" />} />
+                <Route exact path='/categories/' render={(props) => <CategoryList {...props} Url="http://www.codingindfw.com:8000/api/categories/" />}/>
+                <Route exact path='/categories/:catID' render={(props) => <Category  {...props} Url="http://www.codingindfw.com:8000/api/categories/" />} />
+                <Route exact path='/bycategory/:catID' render={(props) => <PostList {...props} Url="http://www.codingindfw.com:8000/api/posts/" filter="true" />} />
                 
-                <Route exact path='/posts/' render={(props) => <PostList {...props} Url="http://localhost:8000/api/posts/" />} />
-                <Route exact path='/posts/:postID' render={(props) => <Post {...props} Url="http://localhost:8000/api/posts/" />} />
+                <Route exact path='/posts/' render={(props) => <PostList {...props} Url="http://www.codingindfw.com:8000/api/posts/" />} />
+                <Route exact path='/posts/:postID' render={(props) => <Post {...props} Url="http://www.codingindfw.com:8000/api/posts/" />} />
 
                 <Route exact path='/login/' render={(props) => <LoginForm {...props}/>} />
                 <Route exact path='/signup/' render={(props) => <Signup {...props}/>} />
