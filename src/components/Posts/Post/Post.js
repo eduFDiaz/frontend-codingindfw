@@ -14,7 +14,7 @@ export default class Post extends Component{
         //Fetching Post
         const postID = this.props.match.params.postID;
         console.log('[Post.js] postID',`${postID}`);
-        axios.get(`${this.props.Url}${postID}`)
+        axios.get(`${this.props.Url}${postID}/`)
       .then(response => {
         this.setState({
           post: response.data,
